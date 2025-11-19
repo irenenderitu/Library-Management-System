@@ -55,4 +55,27 @@ CREATE TABLE BorrowTransactions (
     FOREIGN KEY (MemberID) REFERENCES Members(MemberID) ON DELETE CASCADE,
     FOREIGN KEY (BookID) REFERENCES Books(BookID) ON DELETE CASCADE
 );
+-- Members
+INSERT INTO Members (FirstName, LastName, Email, PhoneNumber) VALUES
+('John', 'Doe', 'john.doe@example.com', '1234567890'),
+('Jane', 'Smith', 'jane.smith@example.com', '0987654321');
 
+-- Authors
+INSERT INTO Authors (FirstName, LastName) VALUES
+('George', 'Orwell'),
+('J.K.', 'Rowling');
+
+-- Books
+INSERT INTO Books (Title, ISBN, Publisher, YearPublished, CopiesAvailable) VALUES
+('1984', '9780451524935', 'Secker & Warburg', 1949, 5),
+('Harry Potter and the Philosopher''s Stone', '9780747532699', 'Bloomsbury', 1997, 3);
+
+-- BookAuthors (Many-to-Many)
+INSERT INTO BookAuthors (BookID, AuthorID) VALUES
+(1, 1),  -- 1984 by George Orwell
+(2, 2);  -- Harry Potter by J.K. Rowling
+
+-- BorrowTransactions
+INSERT INTO BorrowTransactions (MemberID, BookID, BorrowDate) VALUES
+(1, 1, '2025-11-01'),
+(2, 2, '2025-11-05');
